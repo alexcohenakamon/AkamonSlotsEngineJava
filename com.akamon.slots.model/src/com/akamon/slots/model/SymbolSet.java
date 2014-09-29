@@ -73,7 +73,7 @@ public class SymbolSet {
         if(allSymbolNamesToId.containsKey(name))
             throw new SlotModelException("Cannot add symbol with name " + name + ".  Symbol set already contains a symbol with that name");
 
-        int id = autoIncrementSymbolId;
+        int id = autoIncrementSymbolId++;
         long bitMaskValue = -1;
         SymbolClass symbolClass = new SymbolClass(name,bitMaskValue,id,this);
         symbolClass.isExcludeSymbol = isExcludeSymbol;
@@ -124,5 +124,9 @@ public class SymbolSet {
 
     public int getIdForSymbol(String name) {
         return allSymbolNamesToId.get(name);
+    }
+
+    public void setSubstitutionSchemeToDefault() {
+        this.currentSubstitutionScheme = defaultSubstitutionScheme;
     }
 }

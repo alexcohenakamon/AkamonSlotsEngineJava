@@ -31,6 +31,7 @@ public class ReelGridModel {
         this.maxXCoordinate = 0;
         this.maxYCoordinate = 0;
         this.allValidCoordinates = new HashSet<Coordinate>();
+        this.reelsByName = new HashMap<String, Reel>();
     }
 
     public void addReel(Reel reel) throws SlotModelException {
@@ -70,6 +71,10 @@ public class ReelGridModel {
             maxYCoordinate = coordinate.y;
     }
 
+    public int getRngOffsetForCoordinate(Coordinate coordinate) {
+        return this.reelPopulationMap.get(coordinate).rngOffset;
+    }
+
     public int getMaxXCoordinate() {
         return maxXCoordinate;
     }
@@ -88,6 +93,10 @@ public class ReelGridModel {
 
     public Set<Coordinate> getAllValidCoordinates() {
         return allValidCoordinates;
+    }
+
+    public Reel getReelForCoordinate(Coordinate coord) {
+        return this.reelPopulationMap.get(coord).reel;
     }
 
     private class ReelOffsetPair {

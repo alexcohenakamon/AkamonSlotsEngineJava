@@ -51,6 +51,7 @@ public class WeightedList<T> {
         int c_index = index;
         while(c_index < 0)
             c_index += itemsByIndex.size();
+        c_index = c_index%itemsByIndex.size();
         return getByIndex(c_index);
     }
 
@@ -68,6 +69,14 @@ public class WeightedList<T> {
 
     public int size() {
         return this.itemsByIndex.size();
+    }
+
+    public int getTotalWeight() {
+        return totalWeight;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

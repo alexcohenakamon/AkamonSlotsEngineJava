@@ -19,6 +19,18 @@ public class EvaluationPatternWinMapping {
         this.winCombinationSets = winCombinationSets;
     }
 
+    public EvaluationPatternWinMapping() {
+        //To change body of created methods use File | Settings | File Templates.
+    }
+
+    public void setEvaluationPatternSet(EvaluationPatternSet evaluationPatternSet) {
+        this.evaluationPatternSet = evaluationPatternSet;
+    }
+
+    public void setWinCombinationSets(ArrayList<WinCombinationSet> winCombinationSets) {
+        this.winCombinationSets = winCombinationSets;
+    }
+
     public EvaluationPatternSet getEvaluationPatternSet() {
         return evaluationPatternSet;
     }

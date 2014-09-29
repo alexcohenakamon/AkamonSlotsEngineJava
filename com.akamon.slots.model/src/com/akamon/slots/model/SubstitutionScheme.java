@@ -26,7 +26,17 @@ public class SubstitutionScheme {
         this.symbolsById = new HashMap<Integer, SymbolClass>();
         this.name = name;
 
+        for (String symName : symbolSet.allSymbolNamesToId.keySet())
+        {
+            SymbolClass symbolClass = new SymbolClass(symName, 0, symbolSet.allSymbolNamesToId.get(symName), symbolSet);
+            if (symbolSet.naturalSymbolsByName.containsKey(symName))
+            {
+                NaturalSymbol natSymbol = symbolSet.naturalSymbolsByName.get(symName);
+                symbolClass.addComponentSymbol(natSymbol);
+            }
 
+            symbolsById.put(symbolSet.allSymbolNamesToId.get(symName),symbolClass);
+        }
     }
 
     public SymbolClass getSubstitutionSymbol(Symbol symbol) {
@@ -34,7 +44,12 @@ public class SubstitutionScheme {
     }
 
     public void addSymbolSubstitution(String symbolClassName, String naturalSymbolIncluded) {
-        throw new NotImplementedException();
+        SymbolClass subSymbol = symbolsById.get(symbolSet.allSymbolNamesToId.get(symbolClassName));
+        NaturalSymbol naturalSymbol = symbolSet.naturalSymbolsByName.get(naturalSymbolIncluded);
+        if (!subSymbol.componentSymbols.contains(naturalSymbol))
+        {
+            subSymbol.addComponentSymbol(naturalSymbol);
+        }
     }
 
     public String getName() {
