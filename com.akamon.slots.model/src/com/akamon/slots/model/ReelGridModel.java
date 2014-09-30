@@ -45,6 +45,10 @@ public class ReelGridModel {
         }
     }
 
+    public ArrayList<Reel> getReels() {
+        return reels;
+    }
+
     public Reel getReelByName(String name) {
         return reelsByName.get(name);
     }

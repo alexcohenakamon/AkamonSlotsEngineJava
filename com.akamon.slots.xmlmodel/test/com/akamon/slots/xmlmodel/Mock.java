@@ -84,6 +84,7 @@ public class Mock {
         evalPatternWinKVP.winCombinationSetUsed.get(1).winCombinationSetName = "LinePaysRL";
 
         evalPatternWinKVP = new EvaluationPatternWinKVP();
+        reelGridMapping.evaluationPatternWinKVP.add(evalPatternWinKVP);
         evalPatternWinKVP.evaluationPatternSetName = "Scatter";
         evalPatternWinKVP.winCombinationSetUsed = new ArrayList<EvaluationPatternWinKVP.WinCombinationSetUsed>();
         evalPatternWinKVP.winCombinationSetUsed.add(new EvaluationPatternWinKVP.WinCombinationSetUsed());
@@ -108,6 +109,7 @@ public class Mock {
         evalPatternWinKVP.winCombinationSetUsed.get(1).winCombinationSetName = "LinePaysRL";
 
         evalPatternWinKVP = new EvaluationPatternWinKVP();
+        reelGridMapping.evaluationPatternWinKVP.add(evalPatternWinKVP);
         evalPatternWinKVP.evaluationPatternSetName = "Scatter";
         evalPatternWinKVP.winCombinationSetUsed = new ArrayList<EvaluationPatternWinKVP.WinCombinationSetUsed>();
         evalPatternWinKVP.winCombinationSetUsed.add(new EvaluationPatternWinKVP.WinCombinationSetUsed());
@@ -117,9 +119,9 @@ public class Mock {
         xmlGameConfig.betEvaluationMapList.betEvaluationMap.add(freeSpinsBetEvalMap);
 
         freeSpinsBetEvalMap.name = "FreeSpinsBetEvalMap";
-        baseGameBetEvalMap.betEvaluationKVP = new ArrayList<BetEvaluationKVP>();
+        freeSpinsBetEvalMap.betEvaluationKVP = new ArrayList<BetEvaluationKVP>();
         BetEvaluationKVP freeSpinsKvp0 = new BetEvaluationKVP();
-        freeSpinsBetEvalMap.betEvaluationKVP.add(baseGameKvp0);
+        freeSpinsBetEvalMap.betEvaluationKVP.add(freeSpinsKvp0);
         freeSpinsKvp0.betClass = GenerateMockBetClass(3, "*");
         freeSpinsKvp0.reelGridMapping = new ArrayList<BetEvaluationKVP.ReelGridMapping>();
         reelGridMapping = new BetEvaluationKVP.ReelGridMapping();
@@ -136,19 +138,13 @@ public class Mock {
         evalPatternWinKVP.winCombinationSetUsed.get(0).winCombinationSetName = "LinePaysLR";
         evalPatternWinKVP.winCombinationSetUsed.get(1).winCombinationSetName = "LinePaysRL";
 
-        evalPatternWinKVP = new EvaluationPatternWinKVP();
-        evalPatternWinKVP.evaluationPatternSetName = "Scatter";
-        evalPatternWinKVP.winCombinationSetUsed = new ArrayList<EvaluationPatternWinKVP.WinCombinationSetUsed>();
-        evalPatternWinKVP.winCombinationSetUsed.add(new EvaluationPatternWinKVP.WinCombinationSetUsed());
-        evalPatternWinKVP.winCombinationSetUsed.get(0).winCombinationSetName = "ScatterAnyPays";
-
         BetEvaluationKVP freeSpinsKvp1 = new BetEvaluationKVP();
-        freeSpinsBetEvalMap.betEvaluationKVP.add(baseGameKvp1);
+        freeSpinsBetEvalMap.betEvaluationKVP.add(freeSpinsKvp1);
         freeSpinsKvp1.betClass = GenerateMockBetClass(5, "*");
         freeSpinsKvp1.reelGridMapping = new ArrayList<BetEvaluationKVP.ReelGridMapping>();
         reelGridMapping = new BetEvaluationKVP.ReelGridMapping();
         freeSpinsKvp1.reelGridMapping.add(reelGridMapping);
-        reelGridMapping.reelGrid = "BaseGameGrid";
+        reelGridMapping.reelGrid = "FreeSpinsGrid";
         reelGridMapping.evaluationPatternWinKVP = new ArrayList<EvaluationPatternWinKVP>();
 
         evalPatternWinKVP = new EvaluationPatternWinKVP();
@@ -161,10 +157,11 @@ public class Mock {
         evalPatternWinKVP.winCombinationSetUsed.get(1).winCombinationSetName = "LinePaysRL";
 
         evalPatternWinKVP = new EvaluationPatternWinKVP();
-        evalPatternWinKVP.evaluationPatternSetName = "Scatter";
+        reelGridMapping.evaluationPatternWinKVP.add(evalPatternWinKVP);
+        evalPatternWinKVP.evaluationPatternSetName = "Ways";
         evalPatternWinKVP.winCombinationSetUsed = new ArrayList<EvaluationPatternWinKVP.WinCombinationSetUsed>();
         evalPatternWinKVP.winCombinationSetUsed.add(new EvaluationPatternWinKVP.WinCombinationSetUsed());
-        evalPatternWinKVP.winCombinationSetUsed.get(0).winCombinationSetName = "ScatterAnyPays";
+        evalPatternWinKVP.winCombinationSetUsed.get(0).winCombinationSetName = "LinePaysLR";
     }
 
     private static void GenerateMockEvalPatternSetList(GameConfigData xmlGameConfig)
@@ -195,9 +192,10 @@ public class Mock {
         evaluationPatternSet2.name = "Ways";
         evaluationPatternSet2.includeEvaluationPattern = new ArrayList<EvaluationPatternSet.IncludeEvaluationPattern>();
         EvaluationPatternSet.IncludeEvaluationPattern waysIncludePattern = new EvaluationPatternSet.IncludeEvaluationPattern();
-        scatterIncludePattern.evaluationPatternName = "Ways";
+        waysIncludePattern.evaluationPatternName = "Ways";
         evaluationPatternSet2.includeEvaluationPattern.add(waysIncludePattern);
         xmlGameConfig.evaluationPatternSetList.evaluationPatternSet.add(evaluationPatternSet2);
+
     }
 
     public static WinCombinationSet GenerateMockLineWinCombinationSetLR()
@@ -227,7 +225,7 @@ public class Mock {
         for (int symIndex = 1; symIndex <= 7; symIndex++)
         {
             for (int count = 4; count >= 2; count--)
-                winCombinations.add(GenerateMockWinSequentialCombination(count, "W" + symIndex, false, false, false, false, false));
+                winCombinations.add(GenerateMockWinSequentialCombination(count, "W" + symIndex, false));
         }
         xmlWinCombset.winCombination = winCombinations;
 
@@ -265,6 +263,9 @@ public class Mock {
 
                 Trigger trigger2 = new Trigger();
                 trigger2.name = "progressive";
+
+                scatterWinCombination.trigger.add(trigger1);
+                scatterWinCombination.trigger.add(trigger2);
             }
             else {
                 scatterWinCombination.payMultiplicationType = "TotalBet";
@@ -276,6 +277,7 @@ public class Mock {
             SymbolWinElement symbolWinElement = new SymbolWinElement();
             symbolWinElement.count = count;
             symbolWinElement.symbol = "WILD2";
+            scatterWinCombination.symbolWinElement.add(symbolWinElement);
             winCombinations.add(scatterWinCombination);
         }
         xmlWinCombSet.winCombination = winCombinations;
@@ -572,7 +574,7 @@ public class Mock {
             componentSymbol3.symbolname = "WILD2";
             defaultIncludeSymbolClass.componentSymbol.add(componentSymbol3);
 
-            defaultSymbols.add(defaultIncludeSymbolClass);
+            secondarySymbols.add(defaultIncludeSymbolClass);
 
             SymbolClass defaultExcludeSymbolClass = new SymbolClass();
             defaultExcludeSymbolClass.name = "X" + i;
@@ -581,7 +583,7 @@ public class Mock {
             defaultExcludeSymbolClass.componentSymbol.add(componentSymbol2);
             defaultExcludeSymbolClass.componentSymbol.add(componentSymbol3);
 
-            defaultSymbols.add(defaultExcludeSymbolClass);
+            secondarySymbols.add(defaultExcludeSymbolClass);
         }
         secondardySubScheme.symbol = secondarySymbols;
         substitutionSchemes.add(defaultSubScheme);

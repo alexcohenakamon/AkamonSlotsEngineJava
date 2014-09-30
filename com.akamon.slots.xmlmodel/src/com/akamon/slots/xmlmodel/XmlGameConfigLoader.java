@@ -171,16 +171,10 @@ public class XmlGameConfigLoader implements IGameConfigLoader {
     }
 
     public void ParseSymbolSets(GameConfigData xmlGameConfig, GameConfig modelGameConfig) throws SlotModelException {
-        for (BetEvaluationMap xmlBetEvaluationMap : xmlGameConfig.betEvaluationMapList.betEvaluationMap)
+        for (SymbolSet xmlSymbolSet : xmlGameConfig.symbolSetsList.symbolSet)
         {
-            String name = xmlBetEvaluationMap.name;
-            com.akamon.slots.model.BetEvaluationMap modelBetEvaluationMap = new com.akamon.slots.model.BetEvaluationMap(name);
-            for(BetEvaluationKVP xmlBetEvaluationKVP : xmlBetEvaluationMap.betEvaluationKVP)
-            {
-                com.akamon.slots.model.BetEvaluationPairing modelBetEvalKVP = ParseBetEvaluationKVP(xmlBetEvaluationKVP, modelGameConfig);
-                modelBetEvaluationMap.addBetEvaluationPairing(modelBetEvalKVP);
-            }
-            modelGameConfig.addBetEvaluationMap(modelBetEvaluationMap);
+            com.akamon.slots.model.SymbolSet modelSymbolSet = ParseSymbolSet(xmlSymbolSet);
+            modelGameConfig.addSymbolSet(modelSymbolSet);
         }
     }
 

@@ -38,6 +38,14 @@ public class BetClass {
             return false;
     }
 
+    public int getBaseBet() {
+        return baseBet;
+    }
+
+    public HashSet<Integer> getBetMultipliers() {
+        return betMultipliers;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

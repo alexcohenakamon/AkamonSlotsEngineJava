@@ -44,4 +44,28 @@ public class WinCombinationSet {
             }
         }
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setWinCombinations(ArrayList<WinCombination> winCombinations) {
+        this.winCombinations = winCombinations;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public ArrayList<WinCombination> getWinCombinations() {
+        return winCombinations;
+    }
 }

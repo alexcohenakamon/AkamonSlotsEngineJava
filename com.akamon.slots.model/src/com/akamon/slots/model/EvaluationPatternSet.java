@@ -17,6 +17,7 @@ public class EvaluationPatternSet {
 
     public EvaluationPatternSet(String name) {
         this.name = name;
+        this.evaluationPatterns = new ArrayList<EvaluationPattern>();
     }
 
     public String getName() {

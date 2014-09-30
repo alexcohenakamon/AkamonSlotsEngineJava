@@ -26,6 +26,18 @@ public class BetEvaluationMap {
         this.betEvaluationPairings.add(pairing);
     }
 
+    public ArrayList<BetEvaluationPairing> getBetEvaluationPairings() {
+        return betEvaluationPairings;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public HashMap<ReelGridModel,ArrayList<EvaluationPatternWinMapping>> getEvaluationMappingForBet(Bet bet) throws SlotModelException {
         HashMap<ReelGridModel,ArrayList<EvaluationPatternWinMapping>> reelGridMappings = null;
 
